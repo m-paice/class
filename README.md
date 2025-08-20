@@ -3,10 +3,37 @@
 ## Entidade
 
 - Eventos
+  - nome
+  - descricao
+  - data / hora
+  - local
+  - capacidade
+  - status
 - Ingressos
+  - evento
+  - preco
+  - tipo (pista | meia | vip)
+  - descricao
+  - lote
+  - restante
 - Usuarios
+  - nome
+  - email
+  - telefone
+  - sexo
+  - hash
+  - tipo (cliente | organizador)
 - Pedidos
+  - usuario
+  - evento
+  - ingressos
+  - total
+  - status
 - Check-in
+  - ingresso
+  - usuario
+  - link | hash
+  - status
 
 ## Estrutura de pastas
 
@@ -42,7 +69,7 @@ src/
 
 2. Open/Closed Principle **(OCP)**
 
-- Casos de uso podem receber diferentes repositórios sem mudar o código.
+- Casos de uso podem receber diferentes repositórios _sem mudar o código_.
 - Ex: Um repository pode ser em mongodb ou postgres
 
 3. Liskov Substitution Principle **(LSP)**
