@@ -1,16 +1,15 @@
-interface User {
-  id: string;
-  name: string;
-}
+import express from "express";
+import * as routes from "./infra/http/routes";
+import { errorHandler } from "./infra/http/middlewares/errorHandler";
 
-const user: User = {
-  id: Math.random().toString(36).substring(2, 15),
-  name: "John Doe",
-};
+const app = express();
+app.use(express.json());
+app.use(routes.eventRoute.router);
 
-await new Promise<void>((resolve) => {
-  setTimeout(() => {
-    console.log(`User created: ${JSON.stringify(user)}`);
-    resolve();
-  }, 1000);
+app.use(errorHandler);
+
+const PORT = 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

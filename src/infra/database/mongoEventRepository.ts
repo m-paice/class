@@ -24,4 +24,16 @@ export class MongoEventRepository implements IEventsRepository {
       record.status,
     );
   }
+
+  async findAll(): Promise<Event[]> {
+    throw new Error("Method not implemented.");
+  }
+
+  async findById(id: string): Promise<Event | null> {
+    throw new Error("Method not implemented.");
+  }
+
+  async updateById(id: string, event: Partial<Event>): Promise<Event> {
+    throw new Error("Method not implemented.");
+  }
 }
