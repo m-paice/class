@@ -13,5 +13,6 @@ export class Event {
     public location: string,
     public capacity: number,
     public status: EventStatus,
+    public id?: string,
   ) {}
 }

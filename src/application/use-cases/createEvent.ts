@@ -1,7 +1,7 @@
 import { Event, EventStatus } from "../../domain/entities/events";
 import type { IEventsRepository } from "../../domain/repositories/IEventsRepository";
 
-interface CreateEventDTO {
+export interface CreateEventDTO {
   name: string;
   description: string;
   date: Date;
@@ -21,6 +21,7 @@ export class CreateEvent {
       data.capacity,
       EventStatus.Scheduled,
     );
-    return this.eventRepo.save(event);
+    await this.eventRepo.save(event);
+    return event;
   }
 }
