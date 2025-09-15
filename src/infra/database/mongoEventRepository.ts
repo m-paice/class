@@ -1,27 +1,24 @@
+import type { Collection } from "mongodb";
 import { Event } from "../../domain/entities/events";
 import type { IEventsRepository } from "../../domain/repositories/IEventsRepository";
+import { MongoService } from "./mongo/mongo.service";
 
 export class MongoEventRepository implements IEventsRepository {
-  async save(event: Event): Promise<Event> {
-    const record = {
-      _id: "123",
-      name: event.name,
-      description: event.description,
-      date: event.date,
-      location: event.location,
-      capacity: event.capacity,
-      status: event.status,
-    };
+  private get collection(): Collection {
+    return MongoService.getDb().collection("events");
+  }
 
-    // TODO: save in database
+  async save(event: Event): Promise<Event> {
+    const response = await this.collection.insertOne(event);
 
     return new Event(
-      record.name,
-      record.description,
-      record.date,
-      record.location,
-      record.capacity,
-      record.status,
+      event.name,
+      event.description,
+      event.date,
+      event.location,
+      event.capacity,
+      event.status,
+      response.insertedId.toString(),
     );
   }
 
