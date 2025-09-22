@@ -23,7 +23,19 @@ export class MongoEventRepository implements IEventsRepository {
   }
 
   async findAll(): Promise<Event[]> {
-    throw new Error("Method not implemented.");
+    const records = await this.collection.find().toArray();
+    return records.map(
+      (record) =>
+        new Event(
+          record.name,
+          record.description,
+          record.date,
+          record.location,
+          record.capacity,
+          record.status,
+          record._id.toString(),
+        ),
+    );
   }
 
   async findById(id: string): Promise<Event | null> {

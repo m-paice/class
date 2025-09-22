@@ -1,5 +1,6 @@
 import { MongoClient, type Db } from "mongodb";
 import { env } from "../../../shared/config/env";
+import { logger } from "../../../application/services/logger";
 
 export class MongoService {
   private static client: MongoClient;
@@ -10,7 +11,7 @@ export class MongoService {
 
     this.client = new MongoClient(env.DATABASE_URL);
     await this.client.connect();
-    console.log("MongoDB connected");
+    logger.info("MongoDB connected");
 
     this.db = this.client.db(env.DATABASE_NAME);
   }
@@ -18,7 +19,7 @@ export class MongoService {
   public static async disconnect(): Promise<void> {
     if (this.client) {
       await this.client.close();
-      console.log("MongoDB disconnected");
+      logger.info("MongoDB disconnected");
     }
   }
 

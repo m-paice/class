@@ -19,10 +19,12 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@sentry/node": "^10.13.0",
     "dayjs": "^1.11.13",
     "express": "^5.1.0",
     "mongodb": "^6.19.0",
     "nanoid": "^5.1.5",
+    "winston": "^3.17.0",
     "zod": "^4.1.1"
   }
 }
