@@ -19,6 +19,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@faker-js/faker": "^10.0.0",
     "@sentry/node": "^10.13.0",
     "dayjs": "^1.11.13",
     "express": "^5.1.0",

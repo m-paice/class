@@ -5,5 +5,6 @@ export interface IEventsRepository {
   updateById(id: string, event: Partial<Event>): Promise<Event>;
   // remove(id: string): Promise<void>;
   findById(id: string): Promise<Event | null>;
-  findAll(): Promise<Event[]>;
+  findByName(name: string): Promise<Event[] | null>;
+  findAll(data: Record<string, string | undefined>): Promise<Event[]>;
 }

@@ -1,9 +1,10 @@
 import type { IEventsRepository } from "../../domain/repositories/IEventsRepository";
 
-export class FindAllEvent {
+export class FindByName {
   constructor(private readonly eventRepo: IEventsRepository) {}
 
-  async execute(filters: Record<string, string | undefined> = {}) {
-    return this.eventRepo.findAll(filters);
+  async execute(name: string) {
+    const records = await this.eventRepo.findByName(name);
+    return records;
   }
 }
